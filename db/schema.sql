@@ -1,4 +1,4 @@
 DROP DATABASE IF EXISTS
--- whatever_db;
+techBlog_db;
 CREATE DATABASE 
--- whatever_db;
+techBlog_db;

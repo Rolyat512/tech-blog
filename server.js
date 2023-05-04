@@ -17,8 +17,8 @@ const sess = {
   secret: 'Super secret secret',
   cookie: {
     maxAge: 15 * 60 * 1000,
-    httpOnly: true, // helps prevent some XSS attacks
-    secure: false, // not requiring a https request to send this cookie back and forth for localhost, should be set to true though, maybe change after project is done?
+    httpOnly: true, 
+    secure: false,  
     sameSite: 'strict'
   },
   resave: true,

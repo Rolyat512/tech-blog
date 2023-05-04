@@ -3,23 +3,18 @@ const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 const withAuth = require("../../utils/auth");
 
-// this is the route for the user when clicking the signup button
-// route: users/signup
 router.get("/signup", async (req, res) => {
   try {
-    //res.json({message: 'This will be the signup page'} )
-    res.render("signup"); //this will be for redner the welcome handlebars layout when the site first loads
+    res.render("signup"); 
   } catch (err) {
     res.status(400).json({ message: "No page found" });
     console.log(err);
   }
 });
-// THEN this route will be for the sign up
-// route: users/signup
+
 router.post("/signup", async (req, res) => {
   try {
     const dbUserData = await User.create(req.body);
-
     req.session.save(() => {
       req.session.logged_in = true;
 
@@ -31,19 +26,15 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// when the user clicks the sign in button, it will bring them to this login page
-// route: users/login
 router.get("/login", async (req, res) => {
   try {
-    //res.json({message: 'This will be the login page'} )
-    res.render("login"); //this will be for redner the welcome handlebars layout when the site first loads
+    res.render("login");
   } catch (err) {
     res.status(400).json({ message: "No login page found" });
     console.log(err);
   }
 });
-// THEN this route checks to see if there is a matching user when clicking login
-// route: users/login
+
 router.post("/login", async (req, res) => {
   try {
     const dbUserData = await User.findOne({
@@ -55,7 +46,7 @@ router.post("/login", async (req, res) => {
     if (!dbUserData) {
       res
         .status(400)
-        .json({ message: "Email or Password is incorrect, please try again." });
+        .json({ message: "Email or Password is incorrect, please try again!" });
       return;
     }
 
